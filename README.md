@@ -1,52 +1,30 @@
-# P2C: Plan-to-C Query Compiler
+# High Performance Query Processing SS25
+This repository is based on the High Performance Query Processing SS25 Project by Lukas Neef
 
-p2c is an educational compiling query engine.
-Given an operator tree (query plan), it generates C++ code (hence plan-to-code).
-The generated code is nicely formatted and can be inspected in `gen.cpp`.
-
-Components:
-- **`p2c.cpp`** - Main query compiler that generates C++ code from operator trees
-- **`types.hpp`** - Type system supporting integers, doubles, strings, dates
-- **`tpch.hpp`** - TPC-H schema definitions and database autoloading
-- **`io.hpp`** - Memory-mapped I/O with columnar data access
-- **`queryFrame.cpp`** - Runtime framework that executes generated code
-
-## Getting Started
-
-You will need:
-- A C++23 compiler (gcc >= 14, clang >= 19)
-- Alternatively: A C++20 compiler *and* [`libfmt`](https://github.com/fmtlib/fmt)
-- Optionally: clang-format to format generated code
-
-To run a query, follow these steps:
-1. **Data Generation**: Convert TPC-H CSV data to optimized binary columnar format
-2. **Code Generation**: Transform query operators into optimized C++ code
-3. **Compilation**: Build executable with generated code and runtime framework
-4. **Execution**: Load data using memory-mapped files and execute generated code
-
-### Data Generation:
-```bash
-cd data-generator
-./generate-data.sh
+## Repository setup
+After cloning the repository, it is necessary to generate the TPC-H data used in the exercises once.
+To do this, simply execute the following command:
+```
+    cd data-generator && ./generate-data.sh
 ```
 
-This creates scale factor 1 TPC-H data in `data-generator/output/`.
-The script first uses the `dbgen` tool to generate csv files, then reads and converts them to binary data.
+## How to use
+Make sure that you have installed llvm18 or higher. 
+Create a build-directory with `mkdir build` and run `cd build`. To generate the Makefile run `cmake ..`. If llvm18 is not selected by CMake consider recreating the build-directory with `cmake .. -DCMAKE_PREFIX_PATH=/path/to/llvm/cmake`. CMake automatically generates targets for all queries listed below. To generate an executable for a specific query run `make <query-name>`. For example to generate Query 1, run `make tpch-q01`. Simply running `make` compiles all listed queries. 
 
-### Code Generation & Compilation:
-```bash
-make p2c   # Build the query compiler and sample query in p2c.cpp#main
-make query # Compile generated query code
-make       # Does all of the above 
-```
+If you want to inspect the inspected code, make sure to compile the query engine in Debug mode. In this case the generated LLVM-IR is printed to stderr.
 
-### Execution:
-```bash
-# Run with default data location
-./query
+The interface of p2cllvm is slightly different than p2c. GroupBy is Aggregation and the basic `Type` enum of p2c has been replaced by a more comprehensive type system. If you want to specify the type, use `TypeEnum::<type>`. The provided qaas-tool is slightly adapted to make up for that. If you want to replace the `AssertTupleSink` which is the standard output sink by an output to stdout, replace `std::make_unique<AssertTupleSink>(expectedValues)` in `planConverter.cpp` with `std::make_unqiue<PrintTupleSink>()`. 
 
-# Specify data path and run count
-./query data-generator/output 3
-```
+Since the files are built in the build-directory, you have to manually move them to  `queries/definitions/<query>/`. But you can also start them from the build directory. In general the query will be executed with the number of threads equal to `std::hardware_concurrency` .
 
-The current implementation includes a sample query equivalent to TPC-H query 5.
+Before running any query make sure to set the environment variable `tpchpath` to the absolute path to the data set, e.g. `export tpchpath=/opt/tpch-hpqp/sf1/`. Otherwise the engine will be unable to access the dataset. The number of runs is adjusted via the environment variable `runs` and defaults to 3. 
+
+To check the overhead soley caused by the compile time, replace the QueryScheduler in `lib/Driver.cc` with `CompilationTimeScheduler scheduler{db}`.
+## Useful links
+- [Course on Moodle](https://www.moodle.tum.de/course/view.php?id=106626)
+- [Submission and Leaderboard](https://hpqp-leaderboard.dis.cit.tum.de/) Coming soon!
+- [Assignment Repository](https://gitlab.lrz.de/hpqp-ss25/tasks-template)
+
+## Supported Queries
+1, 5, 6, 7, 8, 9, 12, 14, 17, 19
