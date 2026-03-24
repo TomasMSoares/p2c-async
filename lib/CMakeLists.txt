@@ -74,8 +74,8 @@ target_include_directories(hpqpllvm_lib
 target_link_libraries(hpqpllvm_lib PUBLIC LLVM)
 target_link_libraries(hpqpllvm_lib PUBLIC ir)
 target_link_libraries(runtime PRIVATE ir)
-target_link_libraries(hpqpllvm_lib PUBLIC runtime)
 target_link_libraries(hpqpllvm_lib PUBLIC internal)
+target_link_libraries(hpqpllvm_lib PUBLIC runtime)
 
 target_link_libraries(hpqpllvm_lib
     PUBLIC 
