@@ -3,9 +3,13 @@
 #include "internal/ParquetMetadata.h"
 #include "internal/Schema.h"
 #include "internal/basetypes.h"
-#include "internal/utils.h"
 #include "runtime/ArrowBlockPoolWrapper.h"
+
+// AnyBlob includes
+#include <network/transaction.hpp>
+#include <network/tasked_send_receiver.hpp>
 #include <arrow/io/memory.h>
+
 #include <cstring>
 #include <algorithm>
 #include <stdexcept>

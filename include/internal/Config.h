@@ -6,6 +6,8 @@
 #include <stdexcept>
 #include "nlohmann/json.hpp"
 
+namespace p2cllvm {
+
 using json = nlohmann::json;
 
 struct Config {
@@ -101,3 +103,5 @@ struct Config {
 private:
     inline static std::unique_ptr<Config> instance = nullptr;
 };
+
+} // namespace p2cllvm

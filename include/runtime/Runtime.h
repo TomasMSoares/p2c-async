@@ -3,7 +3,6 @@
 #include "ThreadLocal.h"
 #include "ThreadLocalContext.h"
 #include "internal/basetypes.h"
-#include "internal/utils.h"
 #include "runtime/hashtables.h"
 #include "runtime/hyperloglog.h"
 #include "runtime/tuplebuffer.h"

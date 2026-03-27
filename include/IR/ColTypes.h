@@ -9,7 +9,6 @@
 #include "IR/Defs.h"
 #include "Types.h"
 #include "internal/basetypes.h"
-#include "internal/utils.h"
 #include "runtime/Runtime.h"
 
 namespace p2cllvm {

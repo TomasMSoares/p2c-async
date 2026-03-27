@@ -9,7 +9,6 @@
 
 #include "internal/tpch.h"
 #include "internal/basetypes.h"
-#include "internal/utils.h"
 #include "runtime/Runtime.h"
 
 

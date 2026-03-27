@@ -1,11 +1,11 @@
 #include "internal/basetypes.h"
-#include "internal/utils.h"
 #include "runtime/Murmur.h"
 #include "runtime/Runtime.h"
 #include "runtime/ThreadLocalContext.h"
 #include "runtime/hashtables.h"
 #include "runtime/hyperloglog.h"
 #include "runtime/tuplebuffer.h"
+
 #include "stdarg.h"
 #include <bit>
 #include <cassert>

@@ -13,6 +13,17 @@
 #include <string_view>
 #include <string>
 
+// FORWARD DECLARATIONS
+namespace anyblob {
+    namespace network {
+        class Transaction;
+    }
+}
+
+namespace arrow {
+    class Array;
+}
+
 namespace p2cllvm {
 
 // Represents the state of a RowGroup in the pipeline

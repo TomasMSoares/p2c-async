@@ -32,33 +32,24 @@ public:
     explicit BlockPool(size_t max_size = 6UL * 1024 * 1024 * 1024);
     ~BlockPool();
 
-    // Disable copying
+    // Delete copy constructor and assignment
     BlockPool(const BlockPool&) = delete;
     BlockPool& operator=(const BlockPool&) = delete;
 
     std::pair<std::unique_ptr<char, std::function<void(char*)>>, size_t> acquire(size_t size);
-
     bool canAllocate(size_t size) const;
-
     size_t availableMemory() const;
-
     Stats getStats() const;
-
     void setMaxPoolSize(size_t new_max);
-    
     void trim();
 
 private:
     friend class ArrowBlockPoolWrapper;
 
     static size_t getSizeClass(size_t requested);
-    
     Block* findBlock(size_t size);
-    
     void evictBlocks(size_t needed);
-    
     Block* allocateNewBlock(size_t size);
-    
     void release(char* p, size_t capacity);
 
     static constexpr size_t SIZE_BOUNDARY = 4UL * 1024 * 1024;
