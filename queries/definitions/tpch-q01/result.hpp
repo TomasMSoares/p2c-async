@@ -1,0 +1,11 @@
+std::vector<string> expected_count_order = {"1478493", "38854", "2920374", "1478870"};
+std::vector<string> expected_avg_disc = {"0.049985295838397611622", "0.050093426674216296906", "0.049996586053704080367", "0.050009405830127056468"};
+std::vector<string> expected_avg_qty = {"25.522005853257337031693", "25.516471920522983476604", "25.502226769584991511361", "25.505793612690770655973"};
+std::vector<string> expected_sum_charge = {"55909065222.827692", "1469649223.194375", "110367043872.497010", "55889619119.831932"};
+std::vector<string> expected_sum_base_price = {"56586554400.73", "1487504710.38", "111701729697.74", "56568041380.90"};
+std::vector<string> expected_sum_qty = {"37734107.00", "991417.00", "74476040.00", "37719753.00"};
+std::vector<string> expected_avg_price = {"38273.129734621672202709109", "38284.467760848303906933649", "38249.117988908269968161612", "38250.854626099657170677611"};
+std::vector<string> expected_l_linestatus = {"F", "F", "O", "F"};
+std::vector<string> expected_sum_disc_price = {"53758257134.8700", "1413082168.0541", "106118230307.6056", "53741292684.6040"};
+std::vector<string> expected_l_returnflag = {"A", "N", "N", "R"};
+std::unordered_map<std::string, std::vector<std::string>> expectedValues{{"count_order", expected_count_order},{"avg_disc", expected_avg_disc},{"avg_qty", expected_avg_qty},{"sum_charge", expected_sum_charge},{"sum_base_price", expected_sum_base_price},{"sum_qty", expected_sum_qty},{"avg_price", expected_avg_price},{"l_linestatus", expected_l_linestatus},{"sum_disc_price", expected_sum_disc_price},{"l_returnflag", expected_l_returnflag}};

@@ -1,0 +1,16 @@
+{
+    "queries": [
+        "tpch-q01"
+    ],
+    "runs": 5,
+    "use_async": true,
+    "blockpool_size_gb": [120],
+    "max_network_bandwidth_gb": [12.5],
+    "max_prepared_mb": [1024],
+    "max_retriever_proportion": [0.333],
+    "epoch_duration_ms": [50],
+    "warm_up_time_ms": [300],
+    "damping_factor": [0.5],
+    "ema_alpha": [0.1],
+    "reassignment_threshold": [0.05]
+}
