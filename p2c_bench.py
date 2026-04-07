@@ -14,6 +14,7 @@ class P2CBenchmark:
     flame_base_dir = os.path.join(base_dir, "flamegraph_data")
 
     # UNCOMMENT DEPENDING ON LOCAL VS AWS
+    # AWS PATH LIKELY NEEDS TO BE ADJUSTED TO THE EXACT PERF VERSION AND LOCATIOn
     perf_base = "/usr/lib/linux-tools/6.8.0-101-generic/perf"
     flamegraph_base = "/home/ubuntu/FlameGraph"
     # perf_base = "perf"
