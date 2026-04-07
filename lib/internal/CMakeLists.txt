@@ -3,7 +3,9 @@ file(GLOB_RECURSE INTERNAL_HEADERS
 
 set(INTERNAL_SOURCES 
     ${CMAKE_CURRENT_SOURCE_DIR}/CloudManager.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Schema.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/ParquetTable.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Database.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/QueryScheduler.cc
     )
 

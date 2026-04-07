@@ -2,6 +2,7 @@
 #include "IR/Pipeline.h"
 #include "internal/Compiler.h"
 #include "internal/Database.h"
+#include "internal/Schema.h"
 #include "internal/ParquetTable.h"
 #include "internal/Config.h"
 
@@ -24,6 +25,7 @@ namespace anyblob {
 
 namespace p2cllvm {
 
+// forward declaration
 class QueryCompiler;
 
 template <typename I> 
